@@ -176,16 +176,17 @@ h1 {
     content: "";
     position: absolute;
     right: 18px;
+    top: 50%;
     width: 14px;
     height: 14px;
     border-right: 3px solid var(--black);
     border-bottom: 3px solid var(--black);
     box-sizing: border-box;
-    transform: translateY(-25%) rotate(45deg);
+    transform: translateY(-75%) rotate(45deg);
     transition: transform var(--transitionTime);
 }
 .districtResult.opened::after {
-    transform: translateY(25%) rotate(-135deg);
+    transform: translateY(-25%) rotate(-135deg);
 }
 .districtOptions {
     position: absolute;
@@ -343,7 +344,10 @@ input:invalid {
     .types {
         width: 340px;
         flex-wrap: wrap;
-        gap: 19px 0;
+    }
+    .garages,
+    .townhouses {
+        margin-top: 19px;
     }
     .type {
         width: 160px;
@@ -417,7 +421,10 @@ input:invalid {
     }
     .types {
         width: 300px;
-        gap: 15px 0;
+    }
+    .garages,
+    .townhouses {
+        margin-top: 15px;
     }
     .type {
         width: 143px;

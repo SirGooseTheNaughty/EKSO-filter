@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div class="filtersBlock">
+            <h1>Подбор недвижимости в Нерюнгринском районе</h1>
+            <div class="types">
+                <div class="type living active">Жилая</div>
+                <div class="type commerce">Коммерческая</div>
+                <div class="type garages">Гаражи</div>
+                <div class="type townhouses">Дачи</div>
+            </div>
+            <div class="params">
+                <p class="params__title">Просто заполните нужные параметры для поиска</p>
+                <div class="params__selectors">
+                    <div class="params__field price">
+                        <div class="param__title">Стоимость, ₽</div>
+                        <div class="param__values">
+                            <input class="param__value" type="text" id="price-from" placeholder="От" pattern="^[0-9]+$">
+                            <input class="param__value" type="text" id="price-to" placeholder="До" pattern="^[0-9]+$">
+                        </div>
+                    </div>
+                    <div class="params__field rooms">
+                        <div class="param__title">Количество комнат</div>
+                        <div class="param__values">
+                            <div class="param__value ckeckbox active" id="st">ст</div>
+                            <div class="param__value ckeckbox" id="r1">1</div>
+                            <div class="param__value ckeckbox" id="r2">2</div>
+                            <div class="param__value ckeckbox" id="r3">3</div>
+                            <div class="param__value ckeckbox" id="r4">4</div>
+                        </div>
+                    </div>
+                    <div class="params__field square hidden">
+                        <div class="param__title">Площадь, м²</div>
+                        <div class="param__values">
+                            <input class="param__value" type="text" id="square-from" placeholder="От" pattern="^[0-9]+$">
+                            <input class="param__value" type="text" id="square-to" placeholder="До" pattern="^[0-9]+$">
+                        </div>
+                    </div>
+                    <div class="params__field district">
+                        <div class="param__title">Квартал</div>
+                        <!-- <select class="param__values">
+                            <option class="param__value" value="Квартал М">Квартал М</option>
+                            <option class="param__value" value="Квартал Г">Квартал Г</option>
+                            <option class="param__value" value="Квартал К">Квартал К</option>
+                        </select> -->
+                        <div class="param__values">
+                            <div class="param__value districtResult active">Выбрать из списка</div>
+                            <div class="districtOptions hidden"></div>
+                        </div>
+                    </div>
+                    <div class="params__field address">
+                        <div class="param__values">
+                            <input class="param__value" type="text" id="address" placeholder="Введите населённый пункт, улицу или дом">
+                        </div>
+                    </div>
+                    <button id="showResults">Показать варианты</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

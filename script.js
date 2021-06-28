@@ -1,61 +1,10 @@
-const districtsValues = [
-    'Квартал М',
-    'Квартал Г',
-    'Квартал К',
-    'Квартал Б',
-    'Квартал И',
-    'Квартал Е',
-    'Квартал Д',
-    'Квартал В',
-    'Квартал МДЗ-1',
-    'Квартал МДЗ-2',
-    'Квартал МКЗ',
-    'Квартал Л',
-    'Квартал Н',
-    'Квартал А',
-];
-
-const filtersBlock = document.querySelector('.filtersBlock');
-const allInputs = filtersBlock.querySelectorAll('input');
-const types = {
-    living: filtersBlock.querySelector('.living'),
-    commerce: filtersBlock.querySelector('.commerce'),
-    garages: filtersBlock.querySelector('.garages'),
-    townhouses: filtersBlock.querySelector('.townhouses')
-};
-const prices = {
-    from: filtersBlock.querySelector('#price-from'),
-    to: filtersBlock.querySelector('#price-to')
-};
-const roomsBlock = filtersBlock.querySelector('.rooms');
-const rooms = {
-    st: filtersBlock.querySelector('#st'),
-    '1': filtersBlock.querySelector('#r1'),
-    '2': filtersBlock.querySelector('#r2'),
-    '3': filtersBlock.querySelector('#r3'),
-    '4': filtersBlock.querySelector('#r4'),
-};
-const squaresBlock = filtersBlock.querySelector('.square');
-const squares = {
-    from: filtersBlock.querySelector('#square-from'),
-    to: filtersBlock.querySelector('#square-to')
-};
-const district = {
-    result: filtersBlock.querySelector('.districtResult'),
-    optionsBox: filtersBlock.querySelector('.districtOptions'),
-};
-const address = filtersBlock.querySelector('#address');
-const btn = filtersBlock.querySelector('#showResults');
-
-const typesValues = ['living', 'commerce', 'garages', 'townhouses'];
-
 const state = {
     type: 'living',
     price: {
         from: null,
         to: null
     },
-    rooms: new Set(['st']),
+    rooms: new Set([]),
     square: {
         from: null,
         to: null
@@ -64,12 +13,6 @@ const state = {
     district: '',
     address: ''
 };
-
-// добавление опций по кварталам
-districtsValues.forEach(value => {
-    $(district.optionsBox).append(`<div class="districtOption">${value}</div>`)
-});
-district.options = filtersBlock.querySelectorAll('.districtOption');
 
 // отрисовщики
 function redrawType() {
@@ -104,7 +47,7 @@ function redrawRoomNumbers() {
     }
 }
 function redrawDistrictResult() {
-    district.result.textContent = state.district;
+    district.result.textContent = state.district || 'Все';
 }
 function checkValidity () {
     let isValid = true;
@@ -146,7 +89,11 @@ function clickChooseDistrict(e) {
     }
 }
 function clickDistOption(dist) {
-    state.district = dist;
+    if (dist === districtsValues[0]) {
+        state.district = null;
+    } else {
+        state.district = dist;
+    }
     redrawDistrictResult();
 }
 
@@ -168,3 +115,45 @@ district.options.forEach(option => {
     });
 });
 allInputs.forEach(input => input.addEventListener('input', changeBtnOnValidity));
+
+prices.from.value = '';
+prices.to.value = '';
+squares.from.value = '';
+squares.to.value = '';
+
+prices.from.addEventListener('input', function () {
+    const number = this.value.toString().replace(/\s/g, '');
+    state.price.from = number || null;
+    this.value = preformNumbers(number);
+});
+prices.to.addEventListener('input', function () {
+    const number = this.value.toString().replace(/\s/g, '');
+    state.price.to = number || null;
+    this.value = preformNumbers(number);
+});
+squares.from.addEventListener('input', function () {
+    const number = this.value.toString().replace(/\s/g, '');
+    state.square.from = number || null;
+    this.value = preformNumbers(number);
+});
+squares.to.addEventListener('input', function () {
+    const number = this.value.toString().replace(/\s/g, '');
+    state.square.to = number || null;
+    this.value = preformNumbers(number);
+});
+address.addEventListener('input', function () {
+    state.address = this.value || null;
+});
+
+function preformNumbers (number) {
+    const numbers = number.toString().split('');
+    let i = 0;
+    return numbers.reduceRight((acc, val) => {
+        if (i === 0 || i % 3) {
+            i += 1;
+            return val + acc;
+        }
+        i += 1;
+        return val + ' ' + acc;
+    }, '');
+}

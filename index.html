@@ -28,14 +28,14 @@
                     <div class="params__field price">
                         <div class="param__title">Стоимость, ₽</div>
                         <div class="param__values">
-                            <input class="param__value" type="text" id="price-from" placeholder="От" pattern="^[0-9]+$">
-                            <input class="param__value" type="text" id="price-to" placeholder="До" pattern="^[0-9]+$">
+                            <input class="param__value" type="text" id="price-from" placeholder="От" pattern="^[0-9 ]+$">
+                            <input class="param__value" type="text" id="price-to" placeholder="До" pattern="^[0-9 ]+$">
                         </div>
                     </div>
                     <div class="params__field rooms">
                         <div class="param__title">Количество комнат</div>
                         <div class="param__values">
-                            <div class="param__value ckeckbox active" id="st">ст</div>
+                            <div class="param__value ckeckbox" id="st">ст</div>
                             <div class="param__value ckeckbox" id="r1">1</div>
                             <div class="param__value ckeckbox" id="r2">2</div>
                             <div class="param__value ckeckbox" id="r3">3</div>
@@ -45,8 +45,8 @@
                     <div class="params__field square hidden">
                         <div class="param__title">Площадь, м²</div>
                         <div class="param__values">
-                            <input class="param__value" type="text" id="square-from" placeholder="От" pattern="^[0-9]+$">
-                            <input class="param__value" type="text" id="square-to" placeholder="До" pattern="^[0-9]+$">
+                            <input class="param__value" type="text" id="square-from" placeholder="От" pattern="^[0-9 ]+$">
+                            <input class="param__value" type="text" id="square-to" placeholder="До" pattern="^[0-9 ]+$">
                         </div>
                     </div>
                     <div class="params__field district">
@@ -71,6 +71,8 @@
             </div>
         </div>
     </div>
+
+    <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

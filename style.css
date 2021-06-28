@@ -9,6 +9,8 @@
     --blue: #2A6288;
     --orange: #D0B44F;
     --transitionTime: .1s;
+    --thumbBG: #939393;
+    --thumbWidth: 26px;
 }
 
 #main {
@@ -34,7 +36,8 @@ h1 {
     font-family: 'Raleway', sans-serif;
     font-size: 38px;
     color: var(--white);
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    font-weight: 400;
 }
 .types {
     width: 840px;
@@ -238,6 +241,7 @@ input:invalid {
     }
     h1 {
         font-size: 30px;
+        margin-bottom: 26px;
     }
     .types {
         width: 660px;
@@ -287,6 +291,7 @@ input:invalid {
     h1 {
         width: 380px;
         text-align: center;
+        margin-bottom: 36px;
     }
     .types {
         width: 620px;
@@ -340,6 +345,7 @@ input:invalid {
     h1 {
         width: 340px;
         font-size: 27px;
+        margin-bottom: 41px;
     }
     .types {
         width: 340px;
@@ -418,6 +424,7 @@ input:invalid {
     h1 {
         width: 248px;
         font-size: 20px;
+        margin-bottom: 24px;
     }
     .types {
         width: 300px;
@@ -428,6 +435,7 @@ input:invalid {
     }
     .type {
         width: 143px;
+        height: 35px;
     }
     .params {
         padding: 37px 0;
@@ -435,6 +443,7 @@ input:invalid {
     .params__title {
         width: 250px;
         font-size: 17px;
+        margin-bottom: 27px;
     }
     .params__selectors {
         grid-template-columns: auto;
@@ -470,13 +479,15 @@ input:invalid {
         grid-column-start: 1;
         margin-left: 15px;
         width: 270px;
+        height: 32px;
     }
     .param__title {
-        margin-bottom: 13px;
+        margin-bottom: 10px;
         font-size: 11px;
     }
     .param__value {
         font-size: 12px;
+        height: 30px;
     }
     .districtOption {
         font-size: 12px;

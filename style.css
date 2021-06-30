@@ -130,6 +130,7 @@ h1 {
     justify-content: space-between;
 }
 .param__value {
+    font-family: 'Roboto', sans-serif;
     height: 40px;
     width: 100%;
     border: 1px solid var(--black);
@@ -205,6 +206,7 @@ h1 {
     z-index: 5;
 }
 .districtOption {
+    font-family: 'Roboto', sans-serif;
     line-height: 1.8em;
     color: var(--darkGray);
     padding: 5px 20px;
@@ -418,7 +420,7 @@ input:invalid {
 
 @media screen and (max-width: 480px) {
     .filtersBlock {
-        width: 300px;
+        width: 90%;
         padding: 25px 0 115px 0;
     }
     h1 {
@@ -446,39 +448,36 @@ input:invalid {
         margin-bottom: 27px;
     }
     .params__selectors {
-        grid-template-columns: auto;
+        grid-template-columns: repeat(1, auto);
         grid-template-rows: repeat(5, auto);
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    .params__field {
+        width: 100%;
+        margin-left: 0;
+        grid-column: 1 / 6;
     }
     .price {
         grid-row: 1;
         grid-column-start: 1;
-        margin-left: 15px;
-        width: 195px;
     }
     .rooms,
     .square {
         grid-row: 2;
         grid-column-start: 1;
-        margin-left: 15px;
-        width: 195px;
     }
     .district {
         grid-row: 3;
         grid-column-start: 1;
-        margin-left: 15px;
-        width: 195px;
     }
     .address {
         grid-row: 4;
         grid-column-start: 1;
-        margin-left: 15px;
-        width: 270px;
     }
     #showResults {
         grid-row: 5;
         grid-column-start: 1;
-        margin-left: 15px;
-        width: 270px;
         height: 32px;
     }
     .param__title {

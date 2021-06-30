@@ -89,7 +89,7 @@ function clickChooseDistrict(e) {
     }
 }
 function clickDistOption(dist) {
-    if (dist === districtsValues[0]) {
+    if (dist === allDistrictsOption) {
         state.district = null;
     } else {
         state.district = dist;
@@ -120,6 +120,7 @@ prices.from.value = '';
 prices.to.value = '';
 squares.from.value = '';
 squares.to.value = '';
+address.value = '';
 
 prices.from.addEventListener('input', function () {
     const number = this.value.toString().replace(/\s/g, '');

@@ -1,5 +1,10 @@
+const allDistrictsOption = 'Выбрать все';
+const livingTypeKeywords = new Set(['квартира']);
+const garageKeywords = new Set(['гараж']);
+const townhouseKeywords = new Set(['дача']);
+
 const districtsValues = [
-    'Выбрать все',
+    allDistrictsOption,
     'Квартал М',
     'Квартал Г',
     'Квартал К',
@@ -57,7 +62,3 @@ districtsValues.forEach(value => {
     $(district.optionsBox).append(`<div class="districtOption">${value}</div>`)
 });
 district.options = filtersBlock.querySelectorAll('.districtOption');
-
-const livingTypeKeywords = new Set(['квартира']);
-const garageKeywords = new Set(['гараж']);
-const townhouseKeywords = new Set(['дача']);

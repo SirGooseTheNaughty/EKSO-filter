@@ -227,6 +227,12 @@ h1 {
     font-size: 16px;
     cursor: pointer;
     transition: background-color var(--transitionTime);
+    box-sizing: border-box;
+}
+#showResults:hover,
+#showResults:active {
+    background-color: var(--orange);
+    border: 1px solid var(--black);
 }
 #showResults.invalid {
     pointer-events: none;

@@ -38,6 +38,16 @@ function getCardsData (cards) {
         const title = card.querySelector('.js-product-name').textContent;
         const price = parseInt(card.querySelector('.js-product-price ').getAttribute('data-product-price-def'));
         const descContainer = card.querySelector('.js-store-prod-descr').querySelectorAll('span');
+        let address, district;
+        if (descContainer.length) {
+            address = descContainer[0].textContent;
+            const districtFull = descContainer[1].textContent.split('квартал ');
+            district = districtFull.length > 1 ? districtFull[1] : null;
+        } else {
+            const descPieces = card.querySelector('.js-store-prod-descr').innerHTML.split('<br>');
+            address = descPieces[0];
+            district = descPieces[1] || null;
+        }
         const address = descContainer[0].textContent;
         const districtFull = descContainer[1].textContent.split('квартал ');
         const district = districtFull.length > 1 ? districtFull[1] : null;

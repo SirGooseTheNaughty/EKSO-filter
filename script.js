@@ -69,6 +69,7 @@ function clickType(type) {
     state.type = type;
     redrawType();
     redrawRoomsSquares();
+    refillCatalogue();
 }
 function clickRoomNumber(rn) {
     if (state.rooms.has(rn)) {

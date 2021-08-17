@@ -15,7 +15,7 @@ const districtsValues = [
     'Квартал В',
     'Квартал МДЗ-1',
     'Квартал МДЗ-2',
-    'Квартал МКЗ',
+    'Квартал МКЗ-3',
     'Квартал Л',
     'Квартал Н',
     'Квартал А',
@@ -62,3 +62,9 @@ districtsValues.forEach(value => {
     $(district.optionsBox).append(`<div class="districtOption">${value}</div>`)
 });
 district.options = filtersBlock.querySelectorAll('.districtOption');
+
+// кнопки добавить/убавить
+const addResults = {
+    plus: document.querySelector('#rec342440705'),
+    minus: document.querySelector('#rec342441115')
+};

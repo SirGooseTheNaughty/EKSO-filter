@@ -22,7 +22,7 @@ function getType (title) {
 function parseNumberFromTitle (title) {
     const numbers = title.match(/\d+/);
     if (numbers) {
-        return numbers[0];
+        return parseInt(numbers[0], 10);
     }
     return null;
 }
@@ -41,16 +41,18 @@ function getCardsData (cards) {
         let address, district;
         if (descContainer.length) {
             address = descContainer[0].textContent;
-            const districtFull = descContainer[1].textContent.split('квартал ');
-            district = districtFull.length > 1 ? districtFull[1] : null;
+            
+            if (descContainer[1]) {
+                const districtFull = descContainer[1].textContent.split('квартал ');
+                district = districtFull.length > 1 ? districtFull[1] : null;
+            } else {
+                district = null;
+            }
         } else {
             const descPieces = card.querySelector('.js-store-prod-descr').innerHTML.split('<br>');
             address = descPieces[0];
             district = descPieces[1] || null;
         }
-        const address = descContainer[0].textContent;
-        const districtFull = descContainer[1].textContent.split('квартал ');
-        const district = districtFull.length > 1 ? districtFull[1] : null;
         const type = getType(title);
         const number = parseNumberFromTitle(title);
         const rooms = type === 'living' ? number : null;
@@ -84,5 +86,5 @@ function findElements () {
     console.log(cardsData);
 }
 
-const cardsContainer = document.querySelector('.js-store-grid-cont');
+// const cardsContainer = document.querySelector('.js-store-grid-cont');
 setTimeout(findElements, 50);

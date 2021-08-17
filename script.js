@@ -11,7 +11,8 @@ const state = {
     },
     isRooms: true,
     district: '',
-    address: ''
+    address: '',
+    numVariants: 9
 };
 
 // отрисовщики
@@ -61,6 +62,20 @@ function changeBtnOnValidity () {
         btn.classList.remove('invalid');
     } else {
         btn.classList.add('invalid');
+    }
+}
+function toggleAddVariantsBtns (num) {
+    const isMin = state.numVariants === 9;
+    const isMax = state.numVariants >= num;
+    if (isMin) {
+        addResults.minus.style.display = 'none';
+    } else {
+        addResults.minus.style.display = 'block';
+    }
+    if (isMax) {
+        addResults.plus.style.display = 'none';
+    } else {
+        addResults.plus.style.display = 'block';
     }
 }
 
@@ -124,30 +139,43 @@ squares.to.value = '';
 address.value = '';
 
 prices.from.addEventListener('input', function () {
-    const number = this.value.toString().replace(/\s/g, '');
+    const number = parseInt(this.value.toString().replace(/\s/g, ''), 10);
     state.price.from = number || null;
     this.value = preformNumbers(number);
 });
 prices.to.addEventListener('input', function () {
-    const number = this.value.toString().replace(/\s/g, '');
+    const number = parseInt(this.value.toString().replace(/\s/g, ''), 10);
     state.price.to = number || null;
     this.value = preformNumbers(number);
 });
 squares.from.addEventListener('input', function () {
-    const number = this.value.toString().replace(/\s/g, '');
+    const number = parseInt(this.value.toString().replace(/\s/g, ''), 10);
     state.square.from = number || null;
     this.value = preformNumbers(number);
 });
 squares.to.addEventListener('input', function () {
-    const number = this.value.toString().replace(/\s/g, '');
+    const number = parseInt(this.value.toString().replace(/\s/g, ''), 10);
     state.square.to = number || null;
     this.value = preformNumbers(number);
 });
 address.addEventListener('input', function () {
     state.address = this.value || null;
 });
+addResults.plus.addEventListener('click', () => {
+    state.numVariants += 9;
+    refillCatalogue();
+});
+addResults.minus.addEventListener('click', () => {
+    state.numVariants -= 9;
+    refillCatalogue();
+    const newScrollTop = $(window).scrollTop() - $(cards[0]).height() * 3;
+    $(window).scrollTop(newScrollTop);
+});
 
 function preformNumbers (number) {
+    if (!number) {
+        return '';
+    }
     const numbers = number.toString().split('');
     let i = 0;
     return numbers.reduceRight((acc, val) => {

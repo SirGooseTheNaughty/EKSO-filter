@@ -35,8 +35,8 @@ function filterCards () {
             return false;
         }
         if (district) {
-            const stateDistrict = state.district.split('Квартал ')[1];
-            if (!card.district.includes(stateDistrict)) {
+            const stateDistrict = state.district.toLowerCase().split(' ')[1];
+            if (card.district !== stateDistrict) {
                 console.log(card.address, 'by district');
                 return false;
             }
@@ -57,17 +57,22 @@ function refillCatalogue () {
     const filteredCards = filterCards();
     if (filteredCards.length) {
         updateResultsBlocks(true);
-        filteredCards.forEach(card => {
+        filteredCards.forEach((card, i) => {
+            if (i > state.numVariants - 1) {
+                return;
+            }
             $(cardsContainer).append(card.card);
             drawnCards += 1;
             if (drawnCards === 3) {
                 drawnCards = 0;
-                $(cardsContainer).append(separator);
+                $(cardsContainer).append($(separator).clone());
             }
         });
+
     } else {
         updateResultsBlocks(false);
     }
+    toggleAddVariantsBtns(filteredCards.length);
 }
 
 function updateResultsBlocks (isVisible) {
